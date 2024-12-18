@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../Assets/image/logopngplain1.png" type="image/x-icon">
+  <title>Log In | Holy Gardens Matutum Memorial Park</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+  <link rel="stylesheet" href="../Assets/css/style.css">
+  <link rel="stylesheet" href="../Assets/css/admin_login.css">
+
+  <script src="../Assets/js/main.js" defer></script>
+  <script src="../Assets/js/jquery.min.js"></script>
+  
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+  <script src="../Assets/js/sweetalert.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    :root{
+        --Poppins: 'Poppins', sans-serif;
+        --Font2: 'Roboto', sans-serif;
+        --Font3: 'Inter', sans-serif;
+        --color1: #00563B;
+        --color2: white;
+        --color3: rgb(107, 21, 21);
+    }
+    .first{
+        height:65px;
+        width: 65px;
+    }
+    .container2 img{
+        height:65px;
+        width: 65px;       
+    }
+    .container2 p{
+        margin-top:10px;
+    }
+</style>
+<body>
+    <div id="notif">
+    </div>
+
+    <div class="main-cont">
+        <div class="container1">
+
+            <div class="content first">
+                <img src="../Assets/image/logopngplain1.png" alt="">
+            </div>
+
+            <div class="content second">
+                <h3>Holy Gardens Matutum Memorial Park</h3>
+                <form class="login-form mt-2 p-5 form" method="post" action="" enctype="multipart/form-data">
+
+                    <div class="main-input">
+                        <div class="input-cont input-group has-validation">
+                            <i class='bx bx-user'></i>
+                            <input type="text" class="" placeholder="Username" name="user" aria-describedby="inputGroupPrepend" id="user" required>
+                        </div>
+                    </div>
+                    
+                    <div class="main-input">
+                        <div class="input-cont input-group has-validation">
+                            <i class='bx bx-lock-alt' ></i>
+                            <input type="password" class="" placeholder="Password" name="pwd" aria-describedby="inputGroupPrepend" id="pwd" required>
+                        </div>
+                    </div>
+                    
+                    <div class="submit-btn">
+                        <button class="btn w-80 mt-3" type="" id="btn-login" name="btn-login">LOG IN</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        <div class="container2">
+            <img src="../Assets/image/logo1.png" alt="">
+            <p>Copyright © 2024 Holy Gardens Matutum Memorial Park. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+<script>
+    // ---------------------------------LOG IN----------------------------------------------
+  $('.login-form').on('submit', function(e){
+    e.preventDefault();
+  
+    $.post("queries/login.php", $(this).serialize(), function(data){
+      $("#notif").html(data);
+      window.history.replaceState( null, null, window.location.href );
+    })
+  });
+</script>
+</html>
